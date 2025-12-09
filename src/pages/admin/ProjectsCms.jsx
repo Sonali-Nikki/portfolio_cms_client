@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getProjects, addProject, deleteProject } from "../../api/cmsApi";
-import ProjectForm from "../../components/CMS/ProjectForm";
+import { getProjects, addProject, deleteProject } from "../../api/cmsApi.js";
+import ProjectForm from "../../components/CMS/ProjectForm.jsx";
 
 export default function ProjectsCMS() {
   const [projects, setProjects] = useState([]);

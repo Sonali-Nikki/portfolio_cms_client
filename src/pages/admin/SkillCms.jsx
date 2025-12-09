@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getSkills, addSkill, deleteSkill } from "../../api/cmsApi";
-import SkillsForm from "../../components/CMS/SkillsForm";
+import { getSkills, addSkill, deleteSkill } from "../../api/cmsApi.js";
+import SkillsForm from "../../components/CMS/SkillForm.jsx";
 
 export default function SkillsCMS() {
   const [skills, setSkills] = useState([]);

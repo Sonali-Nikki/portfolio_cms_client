@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getAbout, updateAbout } from "../../api/cmsApi";
-import AboutForm from "../../components/CMS/AboutForm";
+import { getAbout, updateAbout } from "../api/cmsApi.js";
+import AboutForm from "../components/CMS/AboutForm.jsx";
 
 export default function AboutCMS() {
   const [data, setData] = useState(null);

@@ -1,32 +1,65 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useAuth } from "./context/AuthContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+// Pages
+import Login from "./pages/Login.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import AboutPage from "./pages/AboutCms.jsx";
+import SkillsPage from "./pages/admin/SkillCms.jsx";
+import ProjectsPage from "./pages/admin/ProjectsCms.jsx";
 
-const PrivateRoute = ({ children }) => {
-  const { token } = useAuth();
-  return token ? children : <Navigate to="/login" />;
-};
+// Components
+import ProtectedRoute from "./components/ProtectedRoutes.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Public Route */}
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/login" element={<Login />} />
+          {/* Dashboard parent route (protected) */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          >
+            {/* Nested CMS Pages */}
+            <Route
+              path="about"
+              element={
+                <ProtectedRoute>
+                  <AboutPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="skills"
+              element={
+                <ProtectedRoute>
+                  <SkillsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="projects"
+              element={
+                <ProtectedRoute>
+                  <ProjectsPage />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
 
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+          {/* Redirect any unknown route to login */}
+          <Route path="*" element={<Login />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

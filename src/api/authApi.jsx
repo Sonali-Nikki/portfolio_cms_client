@@ -1,10 +1,13 @@
-import axios from "axios";
+import api from "./api.js";
 
 export const loginAdmin = async (email, password) => {
-  const res = await axios.post("http://localhost:5000/api/auth/login", {
-    email,
-    password,
-  });
-
-  return res.data;
+  try {
+    const res = await api.post("/auth/login", { email, password });
+    console.log(res)
+    localStorage.setItem("token", res.data.token);
+    return res.data;
+  } catch (err) {
+    console.log(err.response?.data?.message);
+    throw err;
+  }
 };
