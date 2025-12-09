@@ -24,10 +24,10 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
+    <div className="h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 to-pink-700">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded shadow-md w-80"
+        className="bg-zinc-200 p-6 rounded shadow-lg w-80"
       >
         <h2 className="text-xl font-semibold mb-4">Admin Login</h2>
 

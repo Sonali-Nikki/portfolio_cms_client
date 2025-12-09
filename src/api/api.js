@@ -38,3 +38,32 @@ api.interceptors.response.use(
 
 export default api;
 
+
+// CRUD functions
+export const blogsAPI = {
+  fetch: () => api.get("/blogs"),
+  create: (data) => api.post("/blogs", data),
+  update: (id, data) => api.put(`/blogs/${id}`, data),
+  delete: (id) => api.delete(`/blogs/${id}`),
+};
+
+export const testimonialsAPI = {
+  fetch: () => api.get("/testimonials"),
+  create: (data) => api.post("/testimonials", data),
+  update: (id, data) => api.put(`/testimonials/${id}`, data),
+  delete: (id) => api.delete(`/testimonials/${id}`),
+};
+
+export const experienceAPI = {
+  fetch: () => api.get("/experience"),
+  create: (data) => api.post("/experience", data),
+  update: (id, data) => api.put(`/experience/${id}`, data),
+  delete: (id) => api.delete(`/experience/${id}`),
+};
+
+export const servicesAPI = {
+  fetch: () => api.get("/services"),
+  create: (data) => api.post("/services", data),
+  update: (id, data) => api.put(`/services/${id}`, data),
+  delete: (id) => api.delete(`/services/${id}`),
+};

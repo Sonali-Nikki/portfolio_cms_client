@@ -8,8 +8,14 @@ import AboutPage from "./pages/AboutCms.jsx";
 import SkillsPage from "./pages/admin/SkillCms.jsx";
 import ProjectsPage from "./pages/admin/ProjectsCms.jsx";
 
+import ExperiencePage from "./pages/admin/ExperiencePage.jsx";
+import BlogsPage from "./pages/admin/BlogsPage.jsx";
+import TestimonialsPage from "./pages/admin/TestimonialsPage.jsx";
+import ServicesPage from "./pages/admin/ServicesPage.jsx";
 // Components
 import ProtectedRoute from "./components/ProtectedRoutes.jsx";
+import MainLayout from "./layouts/MainLayout.jsx";
+import Home from "./pages/Home.jsx";
 
 function App() {
   return (
@@ -17,6 +23,22 @@ function App() {
       <Router>
         <Routes>
           {/* Public Route */}
+          <Route
+            path="/"
+            element={
+              <MainLayout>
+                <Home />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <MainLayout>
+                <Home />
+              </MainLayout>
+            }
+          />
           <Route path="/login" element={<Login />} />
 
           {/* Dashboard parent route (protected) */}
@@ -28,31 +50,13 @@ function App() {
               </ProtectedRoute>
             }
           >
-            {/* Nested CMS Pages */}
-            <Route
-              path="about"
-              element={
-                <ProtectedRoute>
-                  <AboutPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="skills"
-              element={
-                <ProtectedRoute>
-                  <SkillsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="projects"
-              element={
-                <ProtectedRoute>
-                  <ProjectsPage />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="skills" element={<SkillsPage />} />
+            <Route path="projects" element={<ProjectsPage />} />
+            <Route path="experience" element={<ExperiencePage />} />
+            <Route path="blogs" element={<BlogsPage />} />
+            <Route path="testimonials" element={<TestimonialsPage />} />
+            <Route path="services" element={<ServicesPage />} />
           </Route>
 
           {/* Redirect any unknown route to login */}
