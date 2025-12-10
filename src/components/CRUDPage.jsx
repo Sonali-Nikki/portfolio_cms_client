@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import AdminLayout from "../layouts/AdminLayout.jsx"
+import AdminLayout from "../layouts/AdminLayout.jsx";
 
 export default function CRUDPage({ title, api, fields }) {
   const [items, setItems] = useState([]);
@@ -22,7 +22,7 @@ export default function CRUDPage({ title, api, fields }) {
     try {
       setLoading(true);
       const res = await api.fetch();
-      setItems(res.data);
+      setItems(res);
     } catch (err) {
       console.error(err);
     } finally {
@@ -34,7 +34,11 @@ export default function CRUDPage({ title, api, fields }) {
     e.preventDefault();
     try {
       if (editId) {
-        await api.update(editId, form);
+        if (api.update.length === 1) {
+          await api.update(form); // About
+        } else {
+          await api.update(editId, form); // Skills, Projects
+        }
       } else {
         await api.create(form);
       }
@@ -104,7 +108,10 @@ export default function CRUDPage({ title, api, fields }) {
         ) : (
           <div className="space-y-2">
             {items.map((item) => (
-              <div key={item._id} className="border p-4 rounded flex justify-between">
+              <div
+                key={item._id}
+                className="border p-4 rounded flex justify-between"
+              >
                 <div>
                   {fields.map((f) => (
                     <p key={f.name}>
@@ -120,6 +127,19 @@ export default function CRUDPage({ title, api, fields }) {
                   >
                     Edit
                   </button>
+                  {editId && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        resetForm();
+                        setEditId(null);
+                      }}
+                      className="bg-gray-500 text-white px-4 py-2 rounded ml-2"
+                    >
+                      Cancel
+                    </button>
+                  )}
+
                   <button
                     onClick={() => handleDelete(item._id)}
                     className="bg-red-500 text-white px-2 py-1 rounded"

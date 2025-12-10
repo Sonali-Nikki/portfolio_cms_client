@@ -7,7 +7,6 @@ import Dashboard from "./pages/Dashboard.jsx";
 import AboutPage from "./pages/AboutCms.jsx";
 import SkillsPage from "./pages/admin/SkillCms.jsx";
 import ProjectsPage from "./pages/admin/ProjectsCms.jsx";
-
 import ExperiencePage from "./pages/admin/ExperiencePage.jsx";
 import BlogsPage from "./pages/admin/BlogsPage.jsx";
 import TestimonialsPage from "./pages/admin/TestimonialsPage.jsx";
@@ -23,6 +22,8 @@ function App() {
       <Router>
         <Routes>
           {/* Public Route */}
+          <Route path="/login" element={<Login />} />
+          
           <Route
             path="/"
             element={
@@ -39,7 +40,7 @@ function App() {
               </MainLayout>
             }
           />
-          <Route path="/login" element={<Login />} />
+          
 
           {/* Dashboard parent route (protected) */}
           <Route
