@@ -10,16 +10,16 @@ export default function SkillsForm({ onSubmit }) {
         onSubmit({ name });
         setName("");
       }}
-      className="flex gap-2"
+      className="flex gap-2 "
     >
       <input 
         type="text"
-        placeholder="Skill name"
+        placeholder="Skills Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="border p-2"
+        className="border p-2 mt-2 flex-grow"
       />
-      <button className="btn">Add</button>
+      <button className="btn bg-blue-600 hover:bg-blue-700 rounded-sm mt-2 flex-1 ">Add</button>
     </form>
   );
 }

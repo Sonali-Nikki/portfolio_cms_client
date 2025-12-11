@@ -11,6 +11,7 @@ import ExperiencePage from "./pages/admin/ExperiencePage.jsx";
 import BlogsPage from "./pages/admin/BlogsPage.jsx";
 import TestimonialsPage from "./pages/admin/TestimonialsPage.jsx";
 import ServicesPage from "./pages/admin/ServicesPage.jsx";
+// import Contact from "./pages/Contact.jsx";
 // Components
 import ProtectedRoute from "./components/ProtectedRoutes.jsx";
 import MainLayout from "./layouts/MainLayout.jsx";
@@ -23,7 +24,7 @@ function App() {
         <Routes>
           {/* Public Route */}
           <Route path="/login" element={<Login />} />
-          
+
           <Route
             path="/"
             element={
@@ -40,9 +41,10 @@ function App() {
               </MainLayout>
             }
           />
-          
+
 
           {/* Dashboard parent route (protected) */}
+
           <Route
             path="/dashboard"
             element={
@@ -58,6 +60,8 @@ function App() {
             <Route path="blogs" element={<BlogsPage />} />
             <Route path="testimonials" element={<TestimonialsPage />} />
             <Route path="services" element={<ServicesPage />} />
+            {/* <Route path="/contact" element={<Contact />} /> */}
+
           </Route>
 
           {/* Redirect any unknown route to login */}

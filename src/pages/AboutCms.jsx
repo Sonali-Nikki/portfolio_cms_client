@@ -18,7 +18,7 @@ export default function AboutCMS() {
   return (
     <div>
       <h1 className="text-2xl font-bold">Manage About Section</h1>
-
+    
       {editMode ? (
         <AboutForm 
           defaultData={data} 
