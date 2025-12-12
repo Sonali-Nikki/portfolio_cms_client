@@ -16,7 +16,7 @@ export default function SkillsCMS() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">Manage Skills</h1>
+      <h1 className="text-2xl mb-2 font-bold">Manage Skills</h1>
 
       <SkillsForm 
         onSubmit={async (formData) => {
@@ -25,7 +25,7 @@ export default function SkillsCMS() {
         }}
       />
 
-      <ul className="mt-4">
+      <ul className="mt-4 bg-orange-200 rounded ">
         {skills.map((skill) => (
           <li key={skill._id} className="flex justify-between">
             {skill.name}
@@ -34,7 +34,7 @@ export default function SkillsCMS() {
                 await deleteSkill(skill._id);
                 loadSkills();
               }}
-              className="text-red-500"
+              className="text-orange-100 border-2 rounded px-2 mt-2 bg-red-500"
             >
               Delete
             </button>

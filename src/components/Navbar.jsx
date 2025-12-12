@@ -4,11 +4,11 @@ export default function Navbar() {
   return (
     <nav className="fixed w-full bg-gray-200 shadow-lg z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
-        <h1 className="text-2xl font-bold text-bold text-rose-700 shadow-2xl">
+        <h1 className="text-2xl text-bold text-amber-700 font-bold ">
           My Portfolio
         </h1>
 
-        <div className="space-x-6  md:flex">
+        <div className="space-x-6  md:flex font-bold drop-shadow-[0_0_12px_rgba(192,132,252,0.9)]">
           <Link
             to="home"
             smooth="true"
@@ -38,7 +38,7 @@ export default function Navbar() {
             Skills
           </Link>
           <Link
-            to="contact"
+            to="/admin/contact"
             smooth="true"
             className="cursor-pointer font-bold hover:text-blue-600"
           >

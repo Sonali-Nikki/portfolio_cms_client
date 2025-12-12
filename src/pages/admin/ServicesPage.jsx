@@ -1,15 +1,48 @@
-import CRUDPage from "../../components/CRUDPage.jsx";
-import api from "../../api/api.js"
+import { useEffect, useState } from "react";
+import { getServices, addService, deleteService } from "../../api/cmsApi.js";
+import ServiceForm from "../../components/CMS/ServiceForm.jsx";
 
-export default function ServicesPage() {
+export default function ServiceCMS() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    loadServices();
+  }, []);
+
+  const loadServices = async () => {
+    const res = await getServices();
+    setServices(res);
+  };
+
   return (
-    <CRUDPage
-      title="Services"
-      api={api}
-      fields={[
-        { name: "name", label: "Service Name" },
-        { name: "description", label: "Description", type: "textarea" },
-      ]}
-    />
+    <div>
+      <h1 className="text-2xl font-bold">Manage Services</h1>
+
+      <ServiceForm
+        onSubmit={async (formData) => {
+          await addService(formData);
+          loadServices();
+        }}
+      />
+
+      <ul className="mt-4 space-y-3">
+        {services.map((service) => (
+          <li key={service._id} className="p-3 border rounded">
+            <p><b>Title:</b> {service.title}</p>
+            <p><b>Description:</b> {service.description}</p>
+
+            <button
+              onClick={async () => {
+                await deleteService(service._id);
+                loadServices();
+              }}
+              className="text-red-500 mt-2 block"
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

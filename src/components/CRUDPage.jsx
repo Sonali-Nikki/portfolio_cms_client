@@ -7,7 +7,7 @@ export default function CRUDPage({ title, api, fields }) {
   const [form, setForm] = useState({});
   const [editId, setEditId] = useState(null);
 
-  // Initialize form with empty fields
+  // Initialize empty form on mount
   useEffect(() => {
     const emptyForm = {};
     fields.forEach((f) => (emptyForm[f.name] = ""));
@@ -34,16 +34,13 @@ export default function CRUDPage({ title, api, fields }) {
     e.preventDefault();
     try {
       if (editId) {
-        if (api.update.length === 1) {
-          await api.update(form); // About
-        } else {
-          await api.update(editId, form); // Skills, Projects
-        }
+        // Always use update(id, form)
+        await api.update(editId, form);
       } else {
         await api.create(form);
       }
-      setEditId(null);
       resetForm();
+      setEditId(null);
       fetchItems();
     } catch (err) {
       console.error(err);
@@ -83,7 +80,9 @@ export default function CRUDPage({ title, api, fields }) {
                 key={f.name}
                 placeholder={f.label}
                 value={form[f.name]}
-                onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, [f.name]: e.target.value })
+                }
                 className="border p-2 w-full rounded"
               />
             ) : (
@@ -92,14 +91,30 @@ export default function CRUDPage({ title, api, fields }) {
                 type={f.type || "text"}
                 placeholder={f.label}
                 value={form[f.name]}
-                onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, [f.name]: e.target.value })
+                }
                 className="border p-2 w-full rounded"
               />
             )
           )}
+
           <button className="bg-blue-600 text-white px-4 py-2 rounded">
             {editId ? "Update" : "Add"}
           </button>
+
+          {editId && (
+            <button
+              type="button"
+              onClick={() => {
+                resetForm();
+                setEditId(null);
+              }}
+              className="bg-gray-500 text-white px-4 py-2 rounded ml-3"
+            >
+              Cancel
+            </button>
+          )}
         </form>
 
         {/* Items List */}
@@ -120,6 +135,7 @@ export default function CRUDPage({ title, api, fields }) {
                     </p>
                   ))}
                 </div>
+
                 <div className="space-x-2">
                   <button
                     onClick={() => handleEdit(item)}
@@ -127,18 +143,6 @@ export default function CRUDPage({ title, api, fields }) {
                   >
                     Edit
                   </button>
-                  {editId && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        resetForm();
-                        setEditId(null);
-                      }}
-                      className="bg-gray-500 text-white px-4 py-2 rounded ml-2"
-                    >
-                      Cancel
-                    </button>
-                  )}
 
                   <button
                     onClick={() => handleDelete(item._id)}

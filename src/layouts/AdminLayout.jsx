@@ -1,7 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar.jsx";
 
-
 export default function AdminLayout() {
   return (
     <div className="flex h-screen bg-gray-100">

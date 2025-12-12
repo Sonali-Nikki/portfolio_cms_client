@@ -25,7 +25,7 @@ export default function ProjectsCMS() {
         }}
       />
 
-      <div className="mt-4">
+      <div className="mt-4 bg-orange-200 rounded">
         {projects.map((p) => (
           <div key={p._id} className="border p-2 mt-2">
             <h2>{p.title}</h2>
@@ -33,7 +33,7 @@ export default function ProjectsCMS() {
 
             <button 
               onClick={async () => { await deleteProject(p._id); load(); }}
-              className="text-red-500"
+              className="text-orange-100 border-2 rounded px-2 mt-2 bg-red-500"
             >
               Delete
             </button>

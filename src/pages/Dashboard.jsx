@@ -1,11 +1,19 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
-
+import { CiMenuBurger } from "react-icons/ci";
 
 const Dashboard = () => {
   const location = useLocation();
   return (
-    <div className="p-6 bg-gradient-to-br from-purple-600 to-pink-700 min-h-screen font-medium text-black">
-      <h1 className="text-3xl text-teal-100 font-semibold">
+    <div className="p-6 bg-gradient-to-br from-purple-600 to-pink-700 min-h-screen font-medium text-black ">
+      <h1 className="text-4xl text-rose-800 font-semibold fixed w-full bg-slate-200 shadow-lg top-0 left-0 p-1  flex items-center">
+        <button
+          className="text-yellow-800 font-bold p-3 text-3xl mr-4"
+          onClick={() => {
+            window.location.href = "/sidebar";
+          }}
+        >
+          <CiMenuBurger />
+        </button>
         <button
           onClick={() => {
             window.location.href = "/home";
@@ -15,7 +23,7 @@ const Dashboard = () => {
         </button>
       </h1>
 
-      <div className="grid grid-cols-3 gap-4 mt-6 text-teal-950 text-opacity-100 text-base">
+      <div className="grid grid-cols-3 gap-4 mt-16 text-teal-950 text-opacity-100 text-base">
         <Link
           to="about"
           className={`p-4 shadow rounded ${
@@ -65,7 +73,6 @@ const Dashboard = () => {
       <div className="mt-10">
         <Outlet />
       </div>
-
     </div>
   );
 };

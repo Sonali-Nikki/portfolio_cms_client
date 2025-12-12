@@ -1,16 +1,48 @@
-import CRUDPage from "../../components/CRUDPage.jsx";
-import api from "../../api/api.js"
+import { useEffect, useState } from "react";
+import { getBlogs, addBlog, deleteBlog } from "../../api/cmsApi.js";
+import BlogForm from "../../components/CMS/BlogForm.jsx";
 
+export default function BlogsCMS() {
+  const [blogs, setBlogs] = useState([]);
 
-export default function BlogsPage() {
+  useEffect(() => {
+    loadBlogs();
+  }, []);
+
+  const loadBlogs = async () => {
+    const res = await getBlogs();
+    setBlogs(res);
+  };
+
   return (
-    <CRUDPage
-      title="Blogs"
-      api={api}
-      fields={[
-        { name: "title", label: "Title" },
-        { name: "content", label: "Content", type: "textarea" },
-      ]}
-    />
+    <div>
+      <h1 className="text-2xl font-bold">Manage Blogs</h1>
+
+      <BlogForm
+        onSubmit={async (formData) => {
+          await addBlog(formData);
+          loadBlogs();
+        }}
+      />
+
+      <ul className="mt-4 space-y-3 bg-orange-200 rounded">
+        {blogs.map((blog) => (
+          <li key={blog._id} className="p-3 border rounded">
+            <h2 className="font-bold">{blog.title}</h2>
+            <p>{blog.content}</p>
+
+            <button
+              onClick={async () => {
+                await deleteBlog(blog._id);
+                loadBlogs();
+              }}
+              className="text-orange-100 border-2 rounded px-2 mt-2 bg-red-500 block"
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
