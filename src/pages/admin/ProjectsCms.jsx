@@ -27,7 +27,7 @@ export default function ProjectsCMS() {
 
       <div className="mt-4 bg-orange-200 rounded">
         {projects.map((p) => (
-          <div key={p._id} className="border p-2 mt-2">
+          <div key={p._id} className="border p-2 mt-2 ">
             <h2>{p.title}</h2>
             <p>{p.description}</p>
 

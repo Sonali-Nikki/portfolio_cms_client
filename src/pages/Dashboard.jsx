@@ -64,7 +64,7 @@ const Dashboard = () => {
         <Link to="services" className="p-4 shadow bg-slate-200 rounded">
           Manage Services
         </Link>
-        <Link to="services" className="p-4 shadow bg-slate-200 rounded">
+        <Link to="testimonials" className="p-4 shadow bg-slate-200 rounded">
           Manage Testimonial
         </Link>
       </div>

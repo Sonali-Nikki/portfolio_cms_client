@@ -26,7 +26,7 @@ export default function TestimonialsCMS() {
         }}
       />
 
-      <ul className="mt-4 space-y-3">
+      <ul className="mt-4 space-y-3 bg-orange-200 rounded">
         {testimonials.map((t) => (
           <li key={t._id} className="p-3 border rounded">
             <p><b>Name:</b> {t.name}</p>
@@ -37,7 +37,7 @@ export default function TestimonialsCMS() {
                 await deleteTestimonial(t._id);
                 loadTestimonials();
               }}
-              className="text-red-500 mt-2 block"
+              className="text-orange-100 border-2 rounded px-2 mt-2 bg-red-500 block"
             >
               Delete
             </button>

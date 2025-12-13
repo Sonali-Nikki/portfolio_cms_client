@@ -36,7 +36,7 @@ export default function ServiceCMS() {
                 await deleteService(service._id);
                 loadServices();
               }}
-              className="text-red-500 mt-2 block"
+              className="text-orange-100 border-2 rounded px-2 mt-2 bg-red-500 block"
             >
               Delete
             </button>

@@ -27,7 +27,7 @@ export default function SkillsCMS() {
 
       <ul className="mt-4 bg-orange-200 rounded ">
         {skills.map((skill) => (
-          <li key={skill._id} className="flex justify-between">
+          <li key={skill._id} className="flex justify-between pl-2 items-center border-b p-2">
             {skill.name}
             <button 
               onClick={async () => {

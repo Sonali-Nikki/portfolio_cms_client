@@ -11,3 +11,8 @@ export const loginAdmin = async (email, password) => {
     throw err;
   }
 };
+
+
+
+export const registerUser = (data) =>
+  api.post("/auth/register", data);

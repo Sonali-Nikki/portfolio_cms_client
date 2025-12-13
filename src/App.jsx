@@ -3,6 +3,7 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 
 // Pages
 import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import AboutPage from "./pages/AboutCms.jsx";
 import SkillsPage from "./pages/admin/SkillCms.jsx";
@@ -23,18 +24,14 @@ function App() {
       <Router>
         <Routes>
           {/* Public Route */}
+          
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* Home Route */}
 
           <Route
             path="/"
-            element={
-              <MainLayout>
-                <Home />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/home"
             element={
               <MainLayout>
                 <Home />
@@ -52,6 +49,7 @@ function App() {
               </ProtectedRoute>
             }
           >
+            <Route index element={<AboutPage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="skills" element={<SkillsPage />} />
             <Route path="projects" element={<ProjectsPage />} />
@@ -59,7 +57,7 @@ function App() {
             <Route path="blogs" element={<BlogsPage />} />
             <Route path="services" element={<ServicesPage />} />
             <Route path="testimonials" element={<TestimonialsPage />} />
-            {/* <Route path="/admin/contact" element={<Contact />} /> */}
+            <Route path="contact" element={<Contact />} />
           </Route>
 
           {/* Redirect any unknown route to login */}
