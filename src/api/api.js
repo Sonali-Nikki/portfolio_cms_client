@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://portfolio-cms-server-02po.onrender.com/api",
   withCredentials: true,
 });
 
@@ -19,7 +19,7 @@ api.interceptors.response.use(
   async (err) => {
     if (err.response.status === 401) {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/refresh", {
+        const res = await axios.get("https://portfolio-cms-server-02po.onrender.com/api/auth/refresh", {
           withCredentials: true,
         });
 

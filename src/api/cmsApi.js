@@ -1,4 +1,4 @@
-const BASE = "http://localhost:5000/api/cms";
+const BASE = "https://portfolio-cms-server-02po.onrender.com/api/cms";
 
 // Helper: return request with optional token
 const authHeaders = () => ({
