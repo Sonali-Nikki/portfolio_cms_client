@@ -112,9 +112,25 @@ export const getServices = async () => (await fetch(`${BASE}/services`)).json();
 export const addService = async (body) =>
   await fetch(`${BASE}/services`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: authHeaders(),
     body: JSON.stringify(body),
   });
 
 export const deleteService = async (id) =>
-  await fetch(`${BASE}/services/${id}`, { method: "DELETE" });
+  await fetch(`${BASE}/services/${id}`, {
+    method: "DELETE",
+    headers: authHeaders(),
+  });
+
+  
+// CONTACT FORM SUBMISSION
+
+export const submitContactForm = async (body) =>  
+  await fetch(`${BASE}/contact`, {
+    method: "POST",
+    headers: {  
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  }); 
+  
