@@ -1,38 +1,8 @@
-// import { useEffect, useState } from "react";
-// import {
-//   getAbout,
-//   getProjects,
-//   getSkills,
-//   getBlogs,
-//   getTestimonials,
-//   getServices,
-//   getExperience,
-// } from "../api/cmsApi.js";
 
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  // const [about, setAbout] = useState(null);
-  // const [skills, setSkills] = useState([]);
-  // const [projects, setProjects] = useState([]);
-  // const [services, setServices] = useState([]);
-  // const [blogs, setBlogs] = useState([]);
-  // const [testimonials, setTestimonials] = useState([]);
-  // const [experience, setExperience] = useState([]);
 
-  // useEffect(() => {
-  //   loadHomeData();
-  // }, []);
-
-  // const loadHomeData = async () => {
-  //   setAbout(await getAbout());
-  //   setSkills(await getSkills());
-  //   setProjects(await getProjects());
-  //   setServices(await getServices());
-  //   setBlogs(await getBlogs());
-  //   setTestimonials(await getTestimonials());
-  //   setExperience(await getExperience());
-  // };
 
   return (
     <section

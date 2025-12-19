@@ -41,29 +41,29 @@ export default api;
 
 // CRUD functions
 export const blogsAPI = {
-  fetch: () => api.get("/blogs"),
-  create: (data) => api.post("/blogs", data),
-  update: (id, data) => api.put(`/blogs/${id}`, data),
+  fetch: () => api.get("/cms/blogs"),
+  create: (data) => api.post("/cms/blogs", data),
+  update: (id, data) => api.put(`/cms/blogs/${id}`, data),
   delete: (id) => api.delete(`/blogs/${id}`),
 };
 
 export const testimonialsAPI = {
-  fetch: () => api.get("/testimonials"),
-  create: (data) => api.post("/testimonials", data),
-  update: (id, data) => api.put(`/testimonials/${id}`, data),
+  fetch: () => api.get("/cms/testimonials"),
+  create: (data) => api.post("/cms/testimonials", data),
+  update: (id, data) => api.put(`/cms/testimonials/${id}`, data),
   delete: (id) => api.delete(`/testimonials/${id}`),
 };
 
 export const experienceAPI = {
-  fetch: () => api.get("/experience"),
-  create: (data) => api.post("/experience", data),
-  update: (id, data) => api.put(`/experience/${id}`, data),
+  fetch: () => api.get("/cms/experience"),
+  create: (data) => api.post("/cms/experience", data),
+  update: (id, data) => api.put(`/cms/experience/${id}`, data),
   delete: (id) => api.delete(`/experience/${id}`),
 };
 
 export const servicesAPI = {
-  fetch: () => api.get("/services"),
-  create: (data) => api.post("/services", data),
-  update: (id, data) => api.put(`/services/${id}`, data),
-  delete: (id) => api.delete(`/services/${id}`),
+  fetch: () => api.get("/cms/services"),
+  create: (data) => api.post("/cms/services", data),
+  update: (id, data) => api.put(`/cms/services/${id}`, data),
+  delete: (id) => api.delete(`/cms/services/${id}`),
 };
